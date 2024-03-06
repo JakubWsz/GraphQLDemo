@@ -1,0 +1,31 @@
+type Query {
+    students(page: Int, size: Int, filter: StudentFilter): StudentPage
+    allStudents(filter: StudentFilter): [Student]
+}
+type Student {
+    id: ID!
+    firstName: String
+    lastName: String
+    indexNumber: String
+    age: Int
+}
+
+type StudentPage {
+    content: [Student]
+    totalPages: Int
+    totalElements: Int
+    currentPage: Int
+}
+
+input StudentFilter {
+    firstName: String
+    lastName: String
+    indexNumber: String
+    nameIn: [String]
+    nameContains: String
+    ageGreater: Int
+    ageLess: Int
+    ageEquals: Int
+    minAge: Int
+    maxAge: Int
+}
